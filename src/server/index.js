@@ -5,18 +5,23 @@ const request = require('request');
 
 const app = express();
 app.use(cors());
-songUrl = 'http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=15953433&apikey=7c0a4e74e2cc48d57746f864a20c7215';
-app.get('/api/song', (req, res) => {
-  const customers = [
-    {id: 1, firstName: 'John', lastName: 'Doe'},
-    {id: 2, firstName: 'Brad', lastName: 'Traversy'},
-    {id: 3, firstName: 'Mary', lastName: 'Swanson'},
-  ];
+const apiKey = '7c0a4e74e2cc48d57746f864a20c7215';
+const searchCriteria = 'track.search';
+//const apiUrl = 'http://api.musixmatch.com/ws/1.1/' + searchCriteria +'?apiKey='+apiKey+'&f_lyrics_language=en&';
 
-  request(songUrl, { json: true }, (err, resp, body) => {
-    if (err) { return console.log(err); }
-    console.log(body.message.body.lyrics);
-    res.json(body.message.body.lyrics);
+apiUrl = 'http://api.musixmatch.com/ws/1.1/track.search?apikey=7c0a4e74e2cc48d57746f864a20c7215&q_lyrics=nan&f_lyrics_language=en&page_size=100';
+
+const songUrl1 = apiUrl + 'q=nan';
+app.get('/api/songbyword', (req, res) => {
+
+  request(apiUrl, { json: true }, (err, resp, body) => {
+    if (err) {
+      console.log('Error: ', err);
+      return;
+    }
+    console.log('Available : ', body.message.header.available);
+    console.log(body.message.body.track_list.length);
+    res.json(body.message.body.track_list);
   });
 
 });
