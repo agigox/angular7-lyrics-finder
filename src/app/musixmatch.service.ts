@@ -8,13 +8,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MusixmatchService {
 
-  song: Song;
   constructor(private http: HttpClient) {
-    this.song = new Song();
   }
 
 
-  getSongDetails(): Observable<Song> {
-    return this.http.get<Song>('http://localhost:8082/api/song');
+  getSongList(): Observable<Song> {
+    return this.http.get<Song>('http://localhost:8082/api/songbyword');
   }
 }
