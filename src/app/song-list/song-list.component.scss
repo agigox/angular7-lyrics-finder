@@ -1,0 +1,22 @@
+.search-container {
+  border-style: inset;
+  height: 120px;
+}
+.search-control {
+  width: 31%;
+  display: inline-block;
+  position: relative;
+  top: 25px;
+  margin-left: 2%;
+  button {
+    width: 100%;
+  }
+}
+.songs-spinner{
+  margin: 25px 10px;
+}
+.songs-list {
+  margin: 25px 10px;
+  height: 417px;
+  overflow-y: scroll;
+}

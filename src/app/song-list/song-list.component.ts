@@ -1,27 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MusixmatchService } from '../musixmatch.service';
-import { Song } from '../song';
 
 @Component({
   selector: 'app-song-list',
   templateUrl: './song-list.component.html',
-  styleUrls: ['./song-list.component.sass']
+  styleUrls: ['./song-list.component.scss']
 })
 export class SongListComponent implements OnInit {
 
-  songList: Song;
+  songList: any;
+  songWord: String;
+  isLoading: Boolean; // To activate the loader
   constructor(private musixmatchService: MusixmatchService) {}
 
-  getSongList(): void {
-    this.musixmatchService.getSongList().subscribe(
+  getSongList() {
+    this.isLoading = true;
+    this.songList = [];
+    this.musixmatchService.getSongList(this.songWord).subscribe(
       songList => {
-        console.log(songList);
+        this.isLoading = false;
         this.songList = songList;
       }
     );
   }
   ngOnInit() {
-    this.getSongList();
+    console.log(this.songList);
+    this.isLoading = false;
   }
 
 }
