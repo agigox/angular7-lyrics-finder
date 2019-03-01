@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Song } from './song';
-import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -12,7 +10,7 @@ export class MusixmatchService {
   }
 
 
-  getSongList(): Observable<Song> {
-    return this.http.get<Song>('http://localhost:8082/api/songbyword');
+  getSongList(songWord) {
+    return this.http.get(`http://localhost:8082/api/song/${songWord}`);
   }
 }

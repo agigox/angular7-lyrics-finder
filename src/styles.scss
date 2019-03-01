@@ -1,0 +1,13 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Mukta+Malar:300,700');
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Mukta Malar', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  font-size: 18px;
+  padding-top: 2em;
+}
