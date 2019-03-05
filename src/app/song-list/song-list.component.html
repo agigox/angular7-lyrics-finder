@@ -10,8 +10,8 @@
       <button mat-stroked-button (click)="getSongList()" color="primary">Search songs</button>
     </div>
   </div>
-  <div class="songs-spinner">
-    <mat-progress-spinner style="margin:10px auto;" *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner>
+  <div class="songs-spinner" *ngIf="isLoading">
+    <mat-progress-spinner style="margin:10px auto;" mode="indeterminate"></mat-progress-spinner>
   </div>
   <div *ngIf="!isLoading && songList !== undefined" class="songs-list">
     <div *ngFor="let song of songList">

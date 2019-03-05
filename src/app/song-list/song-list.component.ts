@@ -24,7 +24,6 @@ export class SongListComponent implements OnInit {
     );
   }
   ngOnInit() {
-    console.log(this.songList);
     this.isLoading = false;
   }
 
