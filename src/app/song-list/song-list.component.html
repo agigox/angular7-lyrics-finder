@@ -14,11 +14,16 @@
     <mat-progress-spinner style="margin:10px auto;" mode="indeterminate"></mat-progress-spinner>
   </div>
   <div *ngIf="!isLoading && songList !== undefined" class="songs-list">
-    <div *ngFor="let song of songList">
-      {{ song.track.track_name }}
+    <div class="songs-number">
+      There is {{available}} song(s).
     </div>
-  </div>
-  <div *ngIf="songList !== undefined && songList.length == 0 && !isLoading">
-    No song!!
+    <div *ngFor="let song of songList; index as i">
+      {{i}} - {{ song.track.track_name }}
+    </div>
+    <mat-paginator [length]="available"
+              [pageSize]="100"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="turnPage($event)">
+    </mat-paginator>
   </div>
 </div>
